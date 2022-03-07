@@ -9,4 +9,9 @@
     <string name="profile_title">Profile</string>
     <string name="home_quote">Quote</string>
     <string name="home_featured">Featured</string>
+    <string name="my_favorites">My Favorites</string>
+    <string-array name="favorites_sorting">
+        <item>Recently Added</item>
+        <item>Sort A-Z</item>
+    </string-array>
 </resources>

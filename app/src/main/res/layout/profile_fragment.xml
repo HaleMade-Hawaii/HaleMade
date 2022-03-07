@@ -6,14 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".profileFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profileFragment">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_favorites"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="101dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="396dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/lightTeal"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightTeal"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="115dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="396dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/lightTeal"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightTeal"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="341dp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="396dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/lightTeal"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/lightTeal"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="452dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Third Fragment"
+        android:text="@string/my_favorites"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="101dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="396dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightTeal"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/lightTeal"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="396dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/lightTeal"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/lightTeal"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="229dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

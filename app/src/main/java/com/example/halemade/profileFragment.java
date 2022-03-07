@@ -53,6 +53,7 @@ public class profileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -61,4 +62,7 @@ public class profileFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.profile_fragment, container, false);
     }
+
+
+
 }
