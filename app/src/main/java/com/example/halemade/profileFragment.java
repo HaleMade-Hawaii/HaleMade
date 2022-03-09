@@ -64,8 +64,9 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        String [] sorting_choices;
         View view_spinner = inflater.inflate(R.layout.profile_fragment, container, false);
-        String [] sorting_choices = {"Recently Added", "Sort A-Z"};
+        sorting_choices = getResources().getStringArray(R.array.favorites_sorting);
         Spinner spinner = view_spinner.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, sorting_choices);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
