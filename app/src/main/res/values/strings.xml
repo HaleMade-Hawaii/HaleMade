@@ -11,6 +11,7 @@
     <string name="home_featured">Featured</string>
     <string name="my_favorites">My Favorites</string>
     <string name="filler1">Hawaii Doggie Bakery</string>
+    <string name="sort_prompt">Sort By...</string>
     <string-array name="favorites_sorting">
         <item>Recently Added</item>
         <item>Sort A-Z</item>

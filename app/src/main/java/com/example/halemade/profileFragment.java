@@ -1,5 +1,6 @@
 package com.example.halemade;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,8 +64,14 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view_spinner = inflater.inflate(R.layout.profile_fragment, container, false);
+        String [] sorting_choices = {"Recently Added", "Sort A-Z"};
+        Spinner spinner = view_spinner.findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, sorting_choices);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.profile_fragment, container, false);
+        return view_spinner;
     }
 
 
