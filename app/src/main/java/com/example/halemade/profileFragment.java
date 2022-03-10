@@ -64,6 +64,7 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Spinner code reference: https://developer.android.com/guide/topics/ui/controls/spinner#java
         String [] sorting_choices;
         View view_spinner = inflater.inflate(R.layout.profile_fragment, container, false);
         sorting_choices = getResources().getStringArray(R.array.favorites_sorting);
