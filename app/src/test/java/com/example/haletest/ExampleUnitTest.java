@@ -1,4 +1,4 @@
-package com.example.halemade;
+package com.example.haletest;
 
 import org.junit.Test;
 

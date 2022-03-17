@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hale Made</string>
+    <string name="app_name">HaleMade</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
     <!-- TODO: Remove or change this placeholder text -->
