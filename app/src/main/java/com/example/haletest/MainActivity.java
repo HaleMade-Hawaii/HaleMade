@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if(user.isEmailVerified()) {
                         // redirect to user profile
-                        startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                        startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     } else {
                         progressBar.setVisibility(View.GONE);
                         user.sendEmailVerification();

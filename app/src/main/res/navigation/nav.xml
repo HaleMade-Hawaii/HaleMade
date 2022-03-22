@@ -12,12 +12,12 @@
         tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.example.haletest.searchFragment"
+        android:name="com.example.haletest.SearchActivity"
         android:label="fragment_second"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/activity_search" />
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.example.haletest.profileFragment"
+        android:name="com.example.haletest.ProfileActivity"
         android:label="fragment_third"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/activity_profile" />
 </navigation>

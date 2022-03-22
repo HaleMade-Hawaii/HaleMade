@@ -11,16 +11,16 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class ProfileActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_home);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        bottomNavigationView.setSelectedItemId(R.id.nav_person);
+        bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -29,16 +29,17 @@ public class ProfileActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
 
                     case R.id.nav_search:
-                        startActivity(new Intent(ProfileActivity.this, SearchActivity.class));
+                        startActivity(new Intent(HomeActivity.this, SearchActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
+                        break;
 
                     case R.id.nav_home:
-                        startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
-                        overridePendingTransition(0,0);
+                        break;
 
                     case R.id.nav_person:
-                        return true;
+                        startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        break;
                 }
                 return false;
             }
