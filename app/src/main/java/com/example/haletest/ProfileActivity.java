@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button logout;
     private FirebaseUser user;
     private DatabaseReference reference;
+    private Button favorite;
 
     private String userID;
 
@@ -35,6 +36,15 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        favorite = (Button) findViewById(R.id.favorites);
+        favorite.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, FavoriteActivity.class));
+            }
+        });
 
         logout = (Button) findViewById(R.id.signOut);
 
