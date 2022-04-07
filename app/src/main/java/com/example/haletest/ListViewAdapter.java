@@ -16,29 +16,30 @@ public class ListViewAdapter extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
-    private List<AnimalNames> animalNamesList = null;
-    private ArrayList<AnimalNames> arraylist;
+    private List<Businesses> businesses = null;
+    private ArrayList<Businesses> arraylist;
 
-    public ListViewAdapter(Context context, List<AnimalNames> animalNamesList) {
+    public ListViewAdapter(Context context, List<Businesses> businesses) {
         mContext = context;
-        this.animalNamesList = animalNamesList;
+        this.businesses = businesses;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<AnimalNames>();
-        this.arraylist.addAll(animalNamesList);
+        this.arraylist = new ArrayList<Businesses>();
+        this.arraylist.addAll(businesses);
     }
 
     public class ViewHolder {
         TextView name;
+        TextView description;
     }
 
     @Override
     public int getCount() {
-        return animalNamesList.size();
+        return businesses.size();
     }
 
     @Override
-    public AnimalNames getItem(int position) {
-        return animalNamesList.get(position);
+    public Businesses getItem(int position) {
+        return businesses.get(position);
     }
 
     @Override
@@ -51,27 +52,28 @@ public class ListViewAdapter extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_items, null);
-            // Locate the TextViews in listview_item.xml
             holder.name = (TextView) view.findViewById(R.id.name);
+            holder.description = (TextView) view.findViewById(R.id.description);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
-        holder.name.setText(animalNamesList.get(position).getAnimalName());
+        holder.name.setText(businesses.get(position).getBusinessName());
+        holder.description.setText(businesses.get(position).getDescription());
         return view;
     }
 
     // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        animalNamesList.clear();
+        businesses.clear();
         if (charText.length() == 0) {
-            animalNamesList.addAll(arraylist);
+            businesses.addAll(arraylist);
         } else {
-            for (AnimalNames wp : arraylist) {
-                if (wp.getAnimalName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    animalNamesList.add(wp);
+            for (Businesses wp : arraylist) {
+                if (wp.getBusinessName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    businesses.add(wp);
                 }
             }
         }

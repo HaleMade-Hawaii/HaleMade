@@ -19,29 +19,30 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     ListView list;
     ListViewAdapter adapter;
     SearchView editsearch;
-    String[] animalNameList;
-    ArrayList<AnimalNames> arraylist = new ArrayList<AnimalNames>();
+    Businesses[] businesses;
+    ArrayList<Businesses> arrayList = new ArrayList<Businesses>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        animalNameList = new String[]{"Lion", "Tiger", "Dog",
-                "Cat", "Tortoise", "Rat", "Elephant", "Fox",
-                "Cow","Donkey","Monkey"};
+        businesses = new Businesses[3];
+        businesses[0] = new Businesses("Hawaii Doggie Bakery",
+                "We are Hawaii’s original bakery for dogs, founded in 1998, handcrafting " +
+                        "fresh baked healthy innovative treat for dogs using quality local Hawaiian " +
+                        "ingredients!\n");
+        businesses[1] = new Businesses("Purve Donut Shop",
+                "Life Changing Donuts Made Fresh To Order!");
 
         // Locate the ListView in listview_main.xml
         list = (ListView) findViewById(R.id.listview);
 
-        for (int i = 0; i < animalNameList.length; i++) {
-            AnimalNames animalNames = new AnimalNames(animalNameList[i]);
-            // Binds all strings into an array
-            arraylist.add(animalNames);
-        }
+        arrayList.add(businesses[0]);
+        arrayList.add(businesses[1]);
 
         // Pass results to com.example.haletest.ListViewAdapter Class
-        adapter = new ListViewAdapter(this, arraylist);
+        adapter = new ListViewAdapter(this, arrayList);
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
