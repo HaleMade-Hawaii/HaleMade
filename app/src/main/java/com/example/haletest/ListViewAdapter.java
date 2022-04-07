@@ -1,7 +1,6 @@
 package com.example.haletest;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +66,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         holder.name.setText(businesses.get(position).getBusinessName());
         holder.description.setText(businesses.get(position).getDescription());
-        Picasso.with(view.getContext()).load(Uri.parse(businesses.get(position).getImageURL())).error(R.drawable.ic_launcher_foreground).into(holder.image);
+        Picasso.get().load(businesses.get(position).getImageURL()).error(R.drawable.ic_launcher_foreground).into(holder.image);
         return view;
     }
 
