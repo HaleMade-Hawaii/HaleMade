@@ -6,28 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
-    <SearchView
-        android:layout_width="409dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="1dp"
-        android:queryHint="Find a Business..."
-        android:iconifiedByDefault="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:id="@+id/search"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="409dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="10dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Find a Business..."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/search"
-        tools:ignore="MissingConstraints" />
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/search"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

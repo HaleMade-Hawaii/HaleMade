@@ -35,7 +35,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         businesses[1] = new Businesses("Purve Donut Shop",
                 "Life Changing Donuts Made Fresh To Order!");
 
-        // Locate the ListView in listview_main.xml
         list = (ListView) findViewById(R.id.listview);
 
         arrayList.add(businesses[0]);
