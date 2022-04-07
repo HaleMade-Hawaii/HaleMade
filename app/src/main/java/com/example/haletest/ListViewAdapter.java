@@ -1,11 +1,16 @@
 package com.example.haletest;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -30,6 +35,7 @@ public class ListViewAdapter extends BaseAdapter {
     public class ViewHolder {
         TextView name;
         TextView description;
+        ImageView image;
     }
 
     @Override
@@ -54,13 +60,14 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listview_items, null);
             holder.name = (TextView) view.findViewById(R.id.name);
             holder.description = (TextView) view.findViewById(R.id.description);
-            view.setTag(holder);
+            holder.image = (ImageView) view.findViewById(R.id.image);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        // Set the results into TextViews
+
         holder.name.setText(businesses.get(position).getBusinessName());
         holder.description.setText(businesses.get(position).getDescription());
+        Picasso.with(view.getContext()).load(Uri.parse(businesses.get(position).getImageURL())).error(R.drawable.ic_launcher_foreground).into(holder.image);
         return view;
     }
 
