@@ -12,6 +12,7 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView name;
     private TextView description;
+    private TextView location;
 
 
     @Override
@@ -21,6 +22,7 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         name = (TextView) findViewById(R.id.name);
         description = (TextView) findViewById(R.id.description);
+        location = (TextView) findViewById(R.id.location);
         Businesses bus = (Businesses) getIntent().getSerializableExtra(SearchActivity.BUS_DETAIL_KEY);
         loadBusinessPage(bus);
     }
@@ -32,5 +34,6 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         Glide.with(this).load(business.getImageURL()).into(imageView);
         name.setText(business.getBusinessName());
         description.setText(business.getDescription());
+        location.setText(business.getLocation());
     }
 }
