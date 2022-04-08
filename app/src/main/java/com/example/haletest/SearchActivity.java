@@ -31,9 +31,9 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         businesses[0] = new Businesses("Hawaii Doggie Bakery",
                 "We are Hawaii’s original bakery for dogs, founded in 1998, handcrafting " +
                         "fresh baked healthy innovative treat for dogs using quality local Hawaiian " +
-                        "ingredients!\n", "https://www.mediawiki.org/wiki/Help:Images#/media/File:Example.jpg");
+                        "ingredients!\n", "https://i.imgur.com/YfOW14C.jpg");
         businesses[1] = new Businesses("Purve Donut Shop",
-                "Life Changing Donuts Made Fresh To Order!", "https://images.app.goo.gl/9oJkeKNociUegC4T7");
+                "Life Changing Donuts Made Fresh To Order!", "https://i.imgur.com/Jr15ebj.jpg");
 
         list = (ListView) findViewById(R.id.listview);
 

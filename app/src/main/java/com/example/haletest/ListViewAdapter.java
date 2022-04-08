@@ -1,6 +1,7 @@
 package com.example.haletest;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ListViewAdapter extends BaseAdapter {
         mContext = context;
         this.businesses = businesses;
         inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<Businesses>();
+        this.arraylist = new ArrayList<>();
         this.arraylist.addAll(businesses);
     }
 
@@ -57,16 +58,17 @@ public class ListViewAdapter extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_items, null);
-            holder.name = (TextView) view.findViewById(R.id.name);
-            holder.description = (TextView) view.findViewById(R.id.description);
-            holder.image = (ImageView) view.findViewById(R.id.image);
+            holder.name = view.findViewById(R.id.name);
+            holder.description = view.findViewById(R.id.description);
+            holder.image = view.findViewById(R.id.imageView);
+            view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
         holder.name.setText(businesses.get(position).getBusinessName());
         holder.description.setText(businesses.get(position).getDescription());
-        Picasso.get().load(businesses.get(position).getImageURL()).error(R.drawable.ic_launcher_foreground).into(holder.image);
+        Glide.with(view.getContext()).load(businesses.get(position).getImageURL()).into(holder.image);
         return view;
     }
 

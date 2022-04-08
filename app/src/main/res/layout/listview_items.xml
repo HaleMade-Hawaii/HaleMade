@@ -24,7 +24,7 @@
         android:layout_marginTop="60dp" />
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/imageView"
         android:layout_width="139dp"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
