@@ -38,11 +38,16 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         businesses[1] = new Businesses("Purve Donut Shop",
                 "Life Changing Donuts Made Fresh To Order!", "https://i.imgur.com/Jr15ebj.jpg",
                 "1234 Kona St, Honolulu, HI 96814");
+        businesses[2] = new Businesses("Lanikai Bath & Body",
+                "Made fresh and all natural, Lanikai Bath and Body reflects the Hawaii of today, beautiful, light-hearted and cosmopolitan.",
+                "https://i.imgur.com/QOIfPvJ.png",
+                "600 Kailua Road. No. 119 Kailua, Hawaii 96734");
 
         list = (ListView) findViewById(R.id.listview);
 
         arrayList.add(businesses[0]);
         arrayList.add(businesses[1]);
+        arrayList.add(businesses[2]);
 
         // Pass results to com.example.haletest.ListViewAdapter Class
         adapter = new ListViewAdapter(this, arrayList);
