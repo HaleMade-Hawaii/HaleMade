@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -21,6 +23,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     SearchView editsearch;
     Businesses[] businesses;
     ArrayList<Businesses> arrayList = new ArrayList<Businesses>();
+    public static final String BUS_DETAIL_KEY = "business";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,52 +49,66 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
 
-        // Locate the EditText in listview_main.xml
-        editsearch = (SearchView) findViewById(R.id.search);
-        editsearch.setOnQueryTextListener(this);
 
-        // Initialize and assign variable
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+            // Locate the EditText in listview_main.xml
+            editsearch = (SearchView) findViewById(R.id.search);
+            editsearch.setOnQueryTextListener(this);
 
-        // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_search);
+            setupBusinessSelectedListener();
 
-        // Perform item selected listener
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            // Initialize and assign variable
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-                switch(item.getItemId())
-                {
-                    case R.id.nav_home:
-                        startActivity(new Intent(SearchActivity.this, HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+            // Set Home selected
+            bottomNavigationView.setSelectedItemId(R.id.nav_search);
 
-                    case R.id.nav_search:
-                        return true;
+            // Perform item selected listener
+            bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+                @SuppressLint("NonConstantResourceId")
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    case R.id.nav_person:
-                        startActivity(new Intent(SearchActivity.this, ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                    switch (item.getItemId()) {
+                        case R.id.nav_home:
+                            startActivity(new Intent(SearchActivity.this, HomeActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+
+                        case R.id.nav_search:
+                            return true;
+
+                        case R.id.nav_person:
+                            startActivity(new Intent(SearchActivity.this, ProfileActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-    }
+            });
+        }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
+        @Override
+        public boolean onQueryTextSubmit (String query){
 
-        return false;
-    }
+            return false;
+        }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        String text = newText;
-        adapter.filter(text);
-        return false;
-    }
+        @Override
+        public boolean onQueryTextChange (String newText){
+            String text = newText;
+            adapter.filter(text);
+            return false;
+        }
+
+        public void setupBusinessSelectedListener() {
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // Launch the detail view passing book as an extra
+                    Intent intent = new Intent(SearchActivity.this, BusinessInfoPageActivity.class);
+                    intent.putExtra(BUS_DETAIL_KEY, adapter.getItem(position));
+                    startActivity(intent);
+                }
+            });
+        }
 }

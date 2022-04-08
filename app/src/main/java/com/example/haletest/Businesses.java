@@ -1,6 +1,8 @@
 package com.example.haletest;
 
-public class Businesses {
+import java.io.Serializable;
+
+public class Businesses implements Serializable {
     private String businessName;
     private String description;
     private String imageURL;
