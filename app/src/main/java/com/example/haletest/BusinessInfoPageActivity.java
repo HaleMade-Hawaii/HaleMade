@@ -59,6 +59,7 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
                     RegisterUser.addToFavorite(BusinessInfoPageActivity.this, placeId);
                 } else {
                     RegisterUser.removeFromFavorite(BusinessInfoPageActivity.this, placeId);
+                    checkIsFavorite();
                 }
             }
         });
@@ -82,12 +83,12 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        isInMyFavorite = snapshot.exists();
-//                        if (isInMyFavorite) {
-//                            favButton.setImageResource(R.drawable.favorite_turned_in);
-//                        } else {
-//                            favButton.setImageResource(R.drawable.favorite_turned_out);
-//                        }
+                        isInMyFavorite = snapshot.exists();
+                        if (isInMyFavorite) {
+                            favButton.setImageResource(R.drawable.favorite_turned_in);
+                        } else {
+                            favButton.setImageResource(R.drawable.favorite_turned_out);
+                        }
                     }
 
                     @Override
