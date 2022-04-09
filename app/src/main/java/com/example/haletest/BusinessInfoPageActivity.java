@@ -57,6 +57,7 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!isInMyFavorite) {
                     RegisterUser.addToFavorite(BusinessInfoPageActivity.this, placeId);
+                    checkIsFavorite();
                 } else {
                     RegisterUser.removeFromFavorite(BusinessInfoPageActivity.this, placeId);
                     checkIsFavorite();
