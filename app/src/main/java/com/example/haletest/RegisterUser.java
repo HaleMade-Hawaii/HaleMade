@@ -146,56 +146,49 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     public static void addToFavorite(Context context, String placeId) {
         FirebaseAuth fireBaseAuth = FirebaseAuth.getInstance();
-        if (fireBaseAuth.getCurrentUser() == null) {
-            Toast.makeText(context, "You're not logged in", Toast.LENGTH_LONG).show();
-        } else {
-            long timestamp = System.currentTimeMillis();
+        long timestamp = System.currentTimeMillis();
 
-            HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("bookId", "" + placeId);
-            hashMap.put("timestamp", "" + timestamp);
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("placeId", "" + placeId);
+        hashMap.put("timestamp", "" + timestamp);
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-            ref.child(fireBaseAuth.getUid()).child("Favorites").child(placeId)
-                    .setValue(hashMap)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(context, "Added to your favorites list...", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(fireBaseAuth.getUid()).child("Favorites").child(placeId)
+                .setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Added to your favorites list...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
 
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, "Failed to add to favorite due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Failed to add to favorite due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public static void removeFromFavorite(Context context, String placeId) {
         FirebaseAuth fireBaseAuth = FirebaseAuth.getInstance();
-        if (fireBaseAuth.getCurrentUser() == null) {
-            Toast.makeText(context, "You're not logged in", Toast.LENGTH_LONG).show();
-        } else {
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-            ref.child(fireBaseAuth.getUid()).child("Favorites").child(placeId)
-                    .removeValue()
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(context, "Removed from your favorites list...", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(fireBaseAuth.getUid()).child("Favorites").child(placeId)
+                .removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(context, "Removed from your favorites list...", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
 
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, "Failed to remove from favorite due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Failed to remove from favorite due to " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
+
 }

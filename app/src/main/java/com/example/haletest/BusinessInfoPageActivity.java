@@ -25,7 +25,7 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
     private TextView description;
     private TextView location;
     private ImageButton favButton;
-    String placeId;
+    private String placeId;
 
     boolean isInMyFavorite = false;
     private FirebaseAuth firebaseAuth;
@@ -46,6 +46,11 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         location = (TextView) findViewById(R.id.location);
         favButton = (ImageButton) findViewById(R.id.favButton);
 
+//        placeId = name.getText().toString();
+
+        Businesses bus = (Businesses) getIntent().getSerializableExtra(SearchActivity.BUS_DETAIL_KEY);
+        loadBusinessPage(bus);
+
         placeId = name.getText().toString();
 
         favButton.setOnClickListener(new View.OnClickListener() {
@@ -54,16 +59,15 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!isInMyFavorite) {
                     favButton.setImageResource(R.drawable.favorite_turned_in);
+                    RegisterUser.addToFavorite(BusinessInfoPageActivity.this, placeId);
                     isInMyFavorite = !isInMyFavorite;
                 } else {
                     favButton.setImageResource(R.drawable.favorite_turned_out);
+                    RegisterUser.removeFromFavorite(BusinessInfoPageActivity.this, placeId);
                     isInMyFavorite = !isInMyFavorite;
                 }
             }
         });
-
-        Businesses bus = (Businesses) getIntent().getSerializableExtra(SearchActivity.BUS_DETAIL_KEY);
-        loadBusinessPage(bus);
     }
 
     // Populate data for the book
