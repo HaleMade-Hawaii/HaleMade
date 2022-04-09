@@ -36,10 +36,8 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.business_info_page);
 
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            checkIsFavorite();
-//        }
+        firebaseAuth = FirebaseAuth.getInstance();
+
         imageView = (ImageView) findViewById(R.id.imageView);
         name = (TextView) findViewById(R.id.name);
         description = (TextView) findViewById(R.id.description);
@@ -58,16 +56,14 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!isInMyFavorite) {
-                    favButton.setImageResource(R.drawable.favorite_turned_in);
                     RegisterUser.addToFavorite(BusinessInfoPageActivity.this, placeId);
-                    isInMyFavorite = !isInMyFavorite;
                 } else {
-                    favButton.setImageResource(R.drawable.favorite_turned_out);
                     RegisterUser.removeFromFavorite(BusinessInfoPageActivity.this, placeId);
-                    isInMyFavorite = !isInMyFavorite;
                 }
             }
         });
+
+        checkIsFavorite();
     }
 
     // Populate data for the book
@@ -81,17 +77,17 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
     }
 
     private void checkIsFavorite() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid()).child("Favorites").child(placeId)
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        ref.child(firebaseAuth.getUid()).child("Favorites").child(placeId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        isInMyFavorite = snapshot.exists();
-                        if (isInMyFavorite) {
-                            favButton.setImageResource(R.drawable.favorite_turned_in);
-                        } else {
-                            favButton.setImageResource(R.drawable.favorite_turned_out);
-                        }
+//                        isInMyFavorite = snapshot.exists();
+//                        if (isInMyFavorite) {
+//                            favButton.setImageResource(R.drawable.favorite_turned_in);
+//                        } else {
+//                            favButton.setImageResource(R.drawable.favorite_turned_out);
+//                        }
                     }
 
                     @Override
