@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,12 +13,6 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,16 +22,13 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
     ListViewAdapter adapter;
     SearchView editsearch;
     Businesses[] businesses;
-    String[] businessesName;
     ArrayList<Businesses> arrayList = new ArrayList<Businesses>();
     public static final String BUS_DETAIL_KEY = "business";
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        firebaseAuth = FirebaseAuth.getInstance();
 
         businesses = new Businesses[3];
         businesses[0] = new Businesses("Hawaii Doggie Bakery",
@@ -54,82 +43,26 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
                 "https://i.imgur.com/QOIfPvJ.png",
                 "600 Kailua Road. No. 119 Kailua, Hawaii 96734");
 
-        businessesName = new String[3];
-        businessesName[0] = "Hawaii Doggie Bakery";
-        businessesName[1] = "Purve Donut Shop";
-        businessesName[2] = "Lanikai Bath & Body";
+        list = (ListView) findViewById(R.id.listview);
 
-         list = (ListView) findViewById(R.id.listview);
+        arrayList.add(businesses[0]);
+        arrayList.add(businesses[1]);
+        arrayList.add(businesses[2]);
 
-//        arrayList.add(businesses[0]);
-//        arrayList.add(businesses[1]);
-//        arrayList.add(businesses[2]);
-
-        for (int i = 0; i < 3; i++) {
-            checkIsFavorite(businessesName[i], i);
-        }
         // Pass results to com.example.haletest.ListViewAdapter Class
         adapter = new ListViewAdapter(this, arrayList);
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
 
+
         // Locate the EditText in listview_main.xml
         editsearch = (SearchView) findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
 
-        // Initialize and assign variable
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-        // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.nav_person);
-
         setupBusinessSelectedListener();
 
-        // Perform item selected listener
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        startActivity(new Intent(FavoriteActivity.this, HomeActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.nav_search:
-                        startActivity(new Intent(FavoriteActivity.this, SearchActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-
-                    case R.id.nav_person:
-                        startActivity(new Intent(FavoriteActivity.this, ProfileActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });
     }
-
-//    public void refresh() {
-//        final Handler handler = new Handler(Looper.getMainLooper());
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                arrayList.clear();
-//                for (int i = 0; i < 3; i++) {
-//                    checkIsFavorite(businessesName[i], i);
-//                }
-//                // Pass results to com.example.haletest.ListViewAdapter Class
-//                adapter = new ListViewAdapter(FavoriteActivity.this, arrayList);
-//
-//                // Binds the Adapter to the ListView
-//                list.setAdapter(adapter);
-//            }
-//        }, 100);
-//    }
 
     @Override
     public boolean onQueryTextSubmit (String query){
@@ -154,24 +87,5 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
                 startActivity(intent);
             }
         });
-    }
-
-    private void checkIsFavorite(String placeId, int index) {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.child(firebaseAuth.getUid()).child("Favorites").child(placeId)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        boolean isInMyFavorite = snapshot.exists();
-                        if (isInMyFavorite) {
-                            arrayList.add(businesses[index]);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
     }
 }
