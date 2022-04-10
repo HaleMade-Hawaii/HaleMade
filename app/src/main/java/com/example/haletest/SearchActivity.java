@@ -66,7 +66,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
             // Set Home selected
-            bottomNavigationView.setSelectedItemId(R.id.nav_search);
+            bottomNavigationView.setSelectedItemId(R.id.nav_person);
 
             // Perform item selected listener
             bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
