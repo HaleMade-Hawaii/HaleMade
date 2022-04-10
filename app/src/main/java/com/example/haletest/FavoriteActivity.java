@@ -28,7 +28,7 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_favorite);
 
         businesses = new Businesses[3];
         businesses[0] = new Businesses("Hawaii Doggie Bakery",
