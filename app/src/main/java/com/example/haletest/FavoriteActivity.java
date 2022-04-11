@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -24,11 +25,13 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
     Businesses[] businesses;
     ArrayList<Businesses> arrayList = new ArrayList<Businesses>();
     public static final String BUS_DETAIL_KEY = "business";
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         businesses = new Businesses[3];
         businesses[0] = new Businesses("Hawaii Doggie Bakery",
@@ -49,8 +52,10 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
         arrayList.add(businesses[1]);
         arrayList.add(businesses[2]);
 
+
         // Pass results to com.example.haletest.ListViewAdapter Class
         adapter = new ListViewAdapter(this, arrayList);
+        adapter.checkIsFavorite(firebaseAuth.getUid());
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
