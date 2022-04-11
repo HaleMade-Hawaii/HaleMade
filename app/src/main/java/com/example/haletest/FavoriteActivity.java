@@ -26,23 +26,43 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class FavoriteActivity extends AppCompatActivity {
+public class FavoriteActivity extends AppCompatActivity  {
 
     ListView list;
-    ListViewAdapter adapter;
-    ArrayList<String> arrayList = new ArrayList<>();
+
     private FirebaseAuth firebaseAuth;
     DatabaseReference ref;
+
+    ListViewAdapter adapter;
+    Businesses[] businesses;
+    ArrayList<Businesses> arrayList = new ArrayList<>();
+    public static final String BUS_DETAIL_KEY = "business";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
+
+        businesses = new Businesses[3];
+        businesses[0] = new Businesses("Hawaii Doggie Bakery",
+                "We are Hawaii’s original bakery for dogs, founded in 1998, handcrafting " +
+                        "fresh baked healthy innovative treat for dogs using quality local Hawaiian " +
+                        "ingredients!\n", "https://i.imgur.com/YfOW14C.jpg", "2961 E Manoa Rd, Honolulu, HI 96822");
+        businesses[1] = new Businesses("Purve Donut Shop",
+                "Life Changing Donuts Made Fresh To Order!", "https://i.imgur.com/Jr15ebj.jpg",
+                "1234 Kona St, Honolulu, HI 96814");
+        businesses[2] = new Businesses("Lanikai Bath & Body",
+                "Made fresh and all natural, Lanikai Bath and Body reflects the Hawaii of today, beautiful, light-hearted and cosmopolitan.",
+                "https://i.imgur.com/QOIfPvJ.png",
+                "600 Kailua Road. No. 119 Kailua, Hawaii 96734");
+
         list = (ListView) findViewById(R.id.listview);
-        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(FavoriteActivity.this, android.R.layout.simple_list_item_1, arrayList);
-        list.setAdapter(myArrayAdapter);
+
+        adapter = new ListViewAdapter(this, arrayList);
+        list.setAdapter(adapter);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -52,19 +72,30 @@ public class FavoriteActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 HashMap<String, Object> value = (HashMap<String, Object>) snapshot.getValue();
                 String temp = (String) value.get("placeId");
-                arrayList.add(temp);
-                myArrayAdapter.notifyDataSetChanged();
+                for (Businesses wp : businesses) {
+                    if (wp.getBusinessName().equals(temp)) {
+                        arrayList.add(wp);
+                    }
+                }
+                adapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                myArrayAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                HashMap<String, Object> value = (HashMap<String, Object>) snapshot.getValue();
+                String temp = (String) value.get("placeId");
+                for (Businesses wp : businesses) {
+                    if (wp.getBusinessName().equals(temp)) {
+                        arrayList.remove(wp);
+                    }
+                }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -78,6 +109,7 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
+        setupBusinessSelectedListener();
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -110,5 +142,17 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void setupBusinessSelectedListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Launch the detail view passing book as an extra
+                Intent intent = new Intent(FavoriteActivity.this, BusinessInfoPageActivity.class);
+                intent.putExtra(BUS_DETAIL_KEY, adapter.getItem(position));
+                startActivity(intent);
+            }
+        });
     }
 }
