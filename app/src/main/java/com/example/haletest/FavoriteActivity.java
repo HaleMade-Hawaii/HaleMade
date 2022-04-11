@@ -62,6 +62,38 @@ public class FavoriteActivity extends AppCompatActivity implements SearchView.On
 
         setupBusinessSelectedListener();
 
+        // Initialize and assign variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.nav_person);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        startActivity(new Intent(FavoriteActivity.this, HomeActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.nav_search:
+                        startActivity(new Intent(FavoriteActivity.this, SearchActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+                    case R.id.nav_person:
+                        startActivity(new Intent(FavoriteActivity.this, ProfileActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override
