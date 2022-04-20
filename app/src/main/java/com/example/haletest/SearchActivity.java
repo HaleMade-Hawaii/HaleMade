@@ -16,6 +16,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+// SearchView references: https://abhiandroid.com/ui/searchview
+// https://github.com/codepath/android_guides/wiki/Book-Search-Tutorial
+// https://www.javatpoint.com/android-searchview
+
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     ListView list;
@@ -52,23 +56,18 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         // Pass results to com.example.haletest.ListViewAdapter Class
         adapter = new ListViewAdapter(this, arrayList);
 
-        // Binds the Adapter to the ListView
         list.setAdapter(adapter);
 
 
-            // Locate the EditText in listview_main.xml
             editsearch = (SearchView) findViewById(R.id.search);
             editsearch.setOnQueryTextListener(this);
 
             setupBusinessSelectedListener();
 
-            // Initialize and assign variable
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-            // Set Home selected
             bottomNavigationView.setSelectedItemId(R.id.nav_search);
 
-            // Perform item selected listener
             bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
                 @SuppressLint("NonConstantResourceId")
                 @Override

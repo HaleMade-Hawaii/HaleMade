@@ -2,6 +2,10 @@ package com.example.haletest;
 
 import java.io.Serializable;
 
+// SearchView references: https://abhiandroid.com/ui/searchview
+// https://github.com/codepath/android_guides/wiki/Book-Search-Tutorial
+// https://www.javatpoint.com/android-searchview
+
 public class Businesses implements Serializable {
     private String businessName;
     private String description;

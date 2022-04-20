@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+// SearchView references: https://abhiandroid.com/ui/searchview
+// https://github.com/codepath/android_guides/wiki/Book-Search-Tutorial
+// https://www.javatpoint.com/android-searchview
+
 public class BusinessInfoPageActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView name;
@@ -68,10 +72,8 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         checkIsFavorite();
     }
 
-    // Populate data for the book
+    // Sets data; needs Imgur link to work
     private void loadBusinessPage(Businesses business) {
-        //change activity title
-        // Populate data
         Glide.with(this).load(business.getImageURL()).into(imageView);
         name.setText(business.getBusinessName());
         description.setText(business.getDescription());

@@ -24,9 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ListViewAdapter extends BaseAdapter {
+// SearchView references: https://abhiandroid.com/ui/searchview
+// https://github.com/codepath/android_guides/wiki/Book-Search-Tutorial
+// https://www.javatpoint.com/android-searchview
 
-    // Declare Variables
+public class ListViewAdapter extends BaseAdapter {
 
     Context mContext;
     LayoutInflater inflater;
@@ -81,7 +83,6 @@ public class ListViewAdapter extends BaseAdapter {
         return view;
     }
 
-    // Filter Class
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         businesses.clear();
