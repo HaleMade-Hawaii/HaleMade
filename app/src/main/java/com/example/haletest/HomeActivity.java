@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+// Bottom Navigation Reference: https://www.youtube.com/watch?v=Chso6xrJ6aU&t=5s by Stevdza San
 public class HomeActivity extends AppCompatActivity {
 
     @Override

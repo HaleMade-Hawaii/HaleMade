@@ -30,6 +30,7 @@ import java.util.HashMap;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
+    // Login and Registration Reference: https://www.youtube.com/watch?v=Z-RE1QuUWPg by CodeWithMazn
     private FirebaseAuth mAuth;
 
 

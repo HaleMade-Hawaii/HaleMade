@@ -20,6 +20,7 @@ import java.util.ArrayList;
 // https://github.com/codepath/android_guides/wiki/Book-Search-Tutorial
 // https://www.javatpoint.com/android-searchview
 
+// Bottom Navigation Reference: https://www.youtube.com/watch?v=Chso6xrJ6aU&t=5s by Stevdza San
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     ListView list;

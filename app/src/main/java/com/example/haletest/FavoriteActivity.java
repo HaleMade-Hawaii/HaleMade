@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+// Favorites with Firebase Reference: https://www.youtube.com/watch?v=1d2zUZR7Hqs by Atif Pervaiz
 public class FavoriteActivity extends AppCompatActivity  {
 
     ListView list;

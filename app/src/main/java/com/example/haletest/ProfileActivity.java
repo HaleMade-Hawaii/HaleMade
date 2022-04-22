@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+// Bottom Navigation Reference: https://www.youtube.com/watch?v=Chso6xrJ6aU&t=5s by Stevdza San
 public class ProfileActivity extends AppCompatActivity {
 
     private Button logout;
