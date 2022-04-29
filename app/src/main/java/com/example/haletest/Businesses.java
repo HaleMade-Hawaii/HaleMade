@@ -11,13 +11,17 @@ public class Businesses implements Serializable {
     private String description;
     private String imageURL;
     private String location;
+    private String hours;
+    private String website;
 
-    public Businesses(String businessName, String description, String imageURL, String location) {
+    public Businesses(String businessName, String description, String imageURL, String location, String hours, String website) {
 
         this.businessName = businessName;
         this.description = description;
         this.imageURL = imageURL;
         this.location = location;
+        this.hours = hours;
+        this.website = website;
     }
 
     public String getBusinessName() {
@@ -40,4 +44,13 @@ public class Businesses implements Serializable {
         return this.imageURL;
     }
 
+    public String getHours() {
+
+        return this.hours;
+    }
+
+    public String getWebsite() {
+
+        return this.website;
+    }
 }

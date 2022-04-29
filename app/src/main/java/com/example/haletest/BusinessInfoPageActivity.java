@@ -28,6 +28,8 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
     private TextView name;
     private TextView description;
     private TextView location;
+    private TextView hours;
+    private TextView contact;
     private ImageButton favButton;
     private String placeId;
 
@@ -46,6 +48,8 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         name = (TextView) findViewById(R.id.name);
         description = (TextView) findViewById(R.id.description);
         location = (TextView) findViewById(R.id.location);
+        hours = (TextView) findViewById(R.id.hours);
+        contact = (TextView) findViewById(R.id.website);
         favButton = (ImageButton) findViewById(R.id.favButton);
 
 //        placeId = name.getText().toString();
@@ -78,6 +82,8 @@ public class BusinessInfoPageActivity extends AppCompatActivity {
         name.setText(business.getBusinessName());
         description.setText(business.getDescription());
         location.setText(business.getLocation());
+        hours.setText(business.getHours());
+        contact.setText(business.getWebsite());
     }
 
     private void checkIsFavorite() {
