@@ -7,46 +7,40 @@
     tools:context=".homeFragment">
 
     <TextView
-        android:id="@+id/quote"
-        android:layout_width="360dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_corner"
-        android:gravity="center"
-
-        android:text="@string/home_quote"
-        android:textColor="#FFF"
-        android:textSize="25sp"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Hale Made"
+        android:textAlignment="center"
+        android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/firstImage"
-        android:layout_width="167dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="228dp"
-        android:src="@drawable/home_gallery_6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/bannerDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Home for local small businesses"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
 
+<!--  Author Image reference: https://www.vecteezy.com/vector-art/363761-local-business-optimization-banner-the-shop-is-profitable-horizontal-background-with-trees-and-mountains-vector-flat-illustration  -->
     <ImageView
-        android:id="@+id/secondImage"
-        android:layout_width="167dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="480dp"
-        android:src="@drawable/home_gallery_5"
+        android:id="@+id/centerImage"
+        android:layout_width="294dp"
+        android:layout_height="228dp"
+        android:layout_marginBottom="360dp"
+        android:src="@drawable/home_center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -54,7 +48,7 @@
         android:layout_width="360dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="396dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
@@ -64,56 +58,32 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/thirdImage"
-        android:layout_width="167dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="480dp"
-        android:src="@drawable/home_gallery_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
         android:id="@+id/fourthImage"
-        android:layout_width="167dp"
-        android:layout_height="115dp"
+        android:layout_width="183dp"
+        android:layout_height="109dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="128dp"
         android:src="@drawable/home_gallery_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/fifthImage"
+        android:id="@+id/firstImage"
         android:layout_width="167dp"
         android:layout_height="115dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="88dp"
-        android:src="@drawable/home_gallery_3"
+        android:layout_marginBottom="124dp"
+        android:src="@drawable/home_gallery_6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/sixthImage"
-        android:layout_width="167dp"
-        android:layout_height="115dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="88dp"
-        android:src="@drawable/home_gallery_4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 
